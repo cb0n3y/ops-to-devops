@@ -16,7 +16,7 @@ Well, you can read the documentation and try it on your own, or you can check ou
 
 ## Commands
 
-```vagrant up```
+```vagrant up``` will start the vms declared on the file. If you want to start only one vm, just use the same command with the vm name: ```vagrant up <vm-name>```.
 
 Starts the VMs declared in the Vagrantfile.
 
