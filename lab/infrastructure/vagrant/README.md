@@ -1,53 +1,54 @@
-Install Vagrant
+# Install Vagrant
 
 With Vagrant installed, you are able to create, start, stop, and destroy VMs with simple commands.
 
-Prerequisites
+## Prerequisites
 
 You will need:
 
-The Vagrant CLI installed locally on your machine.
+- The [Vagrant CLI](https://developer.hashicorp.com/vagrant/tutorials/get-started/install) installed locally on yo
 
-VirtualBox 7.1.6 installed as your virtualization provider.
+- [VirtualBox_7.1.6](https://www.virtualbox.org/wiki/Downloads) installed as your virtualization provider
 
-Where to Start?
+## Where to Start?
 
-Well, you can read the documentation and try it on your own, or you can check out Learn Vagrant: Get Started to see some examples of how it works.
+Well, you can read the documentation and try it on your own, or you can check out [Learn Vagrant get started] (https://github.com/hashicorp-education/learn-vagrant-get-started) to see some examples of how it works.
 
-Commands
+## Commands
 
-vagrant up
+```vagrant up```
 
 Starts the VMs declared in the Vagrantfile.
 
-vagrant up <vm-name>
+```vagrant up <vm-name>```
 
 Starts only the specified VM.
 
-vagrant halt
+```vagrant halt```
 
 Stops all running VMs.
 
-vagrant halt <vm-name>
+```vagrant halt <vm-name>```
 
 Stops a specific VM.
 
-vagrant destroy -f
+```vagrant destroy -f```
 
 Destroys all created VMs.
 
-vagrant ssh <vm-name>
+```vagrant ssh <vm-name>```
 
 SSH into a specific VM.
 
-vagrant status
+```vagrant status```
 
 Check the current status of the VMs.
 
-Example Vagrantfile
+## Example ```Vagrantfile```
 
 Here’s a simple Vagrantfile to spin up a Rocky Linux 9 VM:
 
+```
 Vagrant.configure("2") do |config|
   config.vm.box = "rockylinux/9"
   config.vm.network "private_network", type: "dhcp"
@@ -56,19 +57,18 @@ Vagrant.configure("2") do |config|
     vb.cpus = 2
   end
 end
+```
 
 To start the VM, simply run:
 
-vagrant up
+```vagrant up```
 
 Once the VM is up, access it using:
 
-vagrant ssh
+```vagrant ssh```
 
-Additional Resources
+## Additional Resources
 
-Vagrant Official Documentation
+- [Vagrant Official Documentation](https://developer.hashicorp.com/vagrant/docs)
 
-HashiCorp Vagrant GitHub
-
-Vagrantfile Reference
+- [HashiCorp Vagrant GitHub](https://github.com/hashicorp-education/learn-vagrant-get-started)
