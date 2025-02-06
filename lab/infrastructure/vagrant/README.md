@@ -12,7 +12,7 @@ You will need:
 
 ## Where to Start?
 
-Well, you can read the documentation and try it on your own, or you can check out [Learn Vagrant get started] (https://github.com/hashicorp-education/learn-vagrant-get-started) to see some examples of how it works.
+Well, you can read the documentation and try it on your own, or you can check out [Learn Vagrant get started](https://github.com/hashicorp-education/learn-vagrant-get-started) to see some examples of how it works.
 
 ## Commands
 
