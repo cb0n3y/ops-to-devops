@@ -9,3 +9,11 @@ n = 1
 while n <= 9:
     print(n)
     n += 1
+
+# or
+
+n = 1
+
+while n < 10:
+    print(n)
+    n += 1
