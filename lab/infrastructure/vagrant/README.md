@@ -16,59 +16,10 @@ Well, you can read the documentation and try it on your own, or you can check ou
 
 ## Commands
 
-```vagrant up```
+```vagrant up``` will start the vms declared on the file. If you want to start only one vm, just use the same command with the vm name: ```vagrant up <vm-name>```.
 
-Starts the VMs declared in the Vagrantfile.
+The same principle applies to the other simple management commands:
 
-```vagrant up <vm-name>```
-
-Starts only the specified VM.
-
-```vagrant halt```
-
-Stops all running VMs.
-
-```vagrant halt <vm-name>```
-
-Stops a specific VM.
-
-```vagrant destroy -f```
-
-Destroys all created VMs.
-
-```vagrant ssh <vm-name>```
-
-SSH into a specific VM.
-
-```vagrant status```
-
-Check the current status of the VMs.
-
-## Example ```Vagrantfile```
-
-Here’s a simple Vagrantfile to spin up a Rocky Linux 9 VM:
-
-```
-Vagrant.configure("2") do |config|
-  config.vm.box = "rockylinux/9"
-  config.vm.network "private_network", type: "dhcp"
-  config.vm.provider "virtualbox" do |vb|
-    vb.memory = "2048"
-    vb.cpus = 2
-  end
-end
-```
-
-To start the VM, simply run:
-
-```vagrant up```
-
-Once the VM is up, access it using:
-
-```vagrant ssh```
-
-## Additional Resources
-
-- [Vagrant Official Documentation](https://developer.hashicorp.com/vagrant/docs)
-
-- [HashiCorp Vagrant GitHub](https://github.com/hashicorp-education/learn-vagrant-get-started)
+- Stop the vm(s) ```vagrant halt [vm-name]```
+- Destory vm(s) ```vagrant destroy [vm-name]```
+- Reload the config ```
