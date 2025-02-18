@@ -1,0 +1,1 @@
+# Given a list of numbers from 1 to n with one missing, find the missing number.

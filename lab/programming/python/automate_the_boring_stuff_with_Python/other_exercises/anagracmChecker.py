@@ -1,0 +1,1 @@
+# Ask for two words and check if they are anagrams of each other.
