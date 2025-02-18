@@ -4,7 +4,7 @@
 import random
 
 
-secretNumber = randoim.randint(1, 20)
+secretNumber = random.randint(1, 20)
 print('I am thinking of a number between 1 and 20.')
 
 # Ask the player to guess 6 times.
@@ -22,6 +22,6 @@ for guessTaken in range(1, 7):
 
 
 if guess == secretNumber:
-    print('Good job! You guessed my number in ' + str(guessesTaken) + ' guesses!')
+    print('Good job! You guessed my number in ' + str(guessTaken) + ' guesses!')
 else:
     print('Nope. The number I was thinking of was ' + str(secretNumber))
