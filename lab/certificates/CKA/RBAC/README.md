@@ -13,6 +13,7 @@ Here we just have some exercises related to RBAC
 ## CLI commands
 
 ``` bash
+
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$  kubectl create ns project-x -o yaml --dry-run=client [> project-x.yaml] # use only the last part of the command, if you want to save it in a yaml file
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> project-x.yam # optional if you want to put everything in a single file
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create sa data-viewer -n project-x -o yaml --dry-run=client >> project-x.yaml
@@ -23,6 +24,7 @@ cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create rolebinding bi
 
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:project-x:data-viewer auth can-i get pods -n project-x
 yes
+
 ```
 
 ## YAML File
@@ -31,6 +33,7 @@ yes
 <summary>Click to view YAML file</summary>
 
 ``` yaml
+
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -74,6 +77,7 @@ subjects:
 - kind: ServiceAccount
   name: data-viewer
   namespace: project-x
+
 ```
 
 </details>
@@ -90,6 +94,12 @@ Prove that the app-deployer service account can delete pods but cannot delete de
 
 ## CLI commands
 
+
+``` bash
+
+echo "test"
+
+```
 
 ## YAML File
 
@@ -162,7 +172,10 @@ subjects:
 
 ## CLI Commands
 
-```bash
+``` bash
+
+echo "test"
+
 ```
 
 
@@ -170,7 +183,9 @@ subjects:
 
 <details>
 <sumary>Click to view the YAML file.</sumary>
-```yaml
+
+``` yaml
+
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -204,6 +219,7 @@ subjects:
 - kind: ServiceAccount
   name: cluster-reader
   namespace: '*'
+
 ```
 </details>
 
@@ -218,7 +234,10 @@ subjects:
 ^
 ## CLI Commands
 
-```bash
+``` bash
+
+echo "test"
+
 ```
 
 
@@ -226,7 +245,9 @@ subjects:
 
 <details>
 <sumary>Click to view the YAML file.</sumary>
-```yaml
+
+``` yaml
+
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -271,7 +292,9 @@ subjects:
 - kind: ServiceAccount
   name: report-generator
   namespace: analytics
+
 ```
+
 </details>
 
 
@@ -284,13 +307,15 @@ subjects:
 
 ## CLI Commands
 
-```bash
+``` bash
+
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create sa full-access-admin --namespace="*" -o yaml --dry-run=client > clusterrole-with-elevated-permissions.yaml
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> clusterrole-with-elevated-permissions.yaml
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create clusterrole cluster-admin-pods --resource=pods --verb=create,get,list,delete --namespace="*" -o yaml --dry-run=client >> clusterrole-with-elevated-permissions.yaml
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> clusterrole-with-elevated-permissions.yaml
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create clusterrolebinding bind-full-access-admin --clusterrole=cluster-admin-pods --serviceaccount=*:full-access-admin -o yaml --dry-run=client >> clusterrole-with-elevated-permissions.yaml
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl apply -f clusterrole-with-elevated-permissions.yaml
+
 ```
 
 
@@ -298,7 +323,9 @@ cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl apply -f clusterrole-
 
 <details>
 <sumary>Click to view the YAML file.</sumary>
-```yaml
+
+``` yaml
+
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -335,7 +362,9 @@ subjects:
 - kind: ServiceAccount
   name: full-access-admin
   namespace: '*'
+
 ```
+
 </details>
 
 
@@ -350,7 +379,8 @@ subjects:
 
 ## CLI Commands
 
-```bash
+``` bash
+
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create ns production -o yaml --dry-run=client > deny-specific-permissions.yaml 
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> deny-specific-permissions.yaml 
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create sa restricted-deployer -n production -o yaml --dry-run=client >> deny-specific-permissions.yaml  
@@ -366,6 +396,7 @@ cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceac
 yes
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:production:restricted-deployer auth can-i list pods -n production
 no
+
 ```
 
 
@@ -373,7 +404,9 @@ no
 
 <details>
 <sumary>Click to view the YAML file.</sumary>
-```yaml
+
+``` yaml
+
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -417,7 +450,9 @@ subjects:
 - kind: ServiceAccount
   name: restricted-deployer
   namespace: production
+ 
 ```
+
 </details>
 
 
@@ -440,7 +475,8 @@ subjects:
 
 ## CLI Commands
 
-```bash
+``` bash
+
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create ns staging-environment -oyaml --dry-run=client > perm-with-multiple-roles.yaml
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> perm-with-multiple-roles.yam
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create sa web-developer -n staging-environment -oyaml --dry-run=client >> perm-with-multiple-roles.yaml 
@@ -467,6 +503,7 @@ cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceac
 yes
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:staging-environment:web-developer auth can-i delete deployments -n staging-environment
 no
+
 ```
 
 
@@ -474,7 +511,9 @@ no
 
 <details>
 <sumary>Click to view the YAML file.</sumary>
-```yaml
+
+``` yaml
+
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -550,7 +589,9 @@ subjects:
 - kind: ServiceAccount
   name: web-developer
   namespace: staging-environment
+
 ```
+
 </details>
 
 
@@ -565,7 +606,8 @@ subjects:
 
 ## CLI Commands
 
-```bash
+``` bash
+
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create ns finance -oyaml --dry-run=client > impersonation-and-fine-grained-access.yaml 
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> impersonation-and-fine-grained-access.yaml 
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create sa report-viewer -n finance -oyaml --dry-run=client >> impersonation-and-fine-grained-access.yaml 
@@ -582,6 +624,7 @@ cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceac
 no
 cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:finance:report-viewer auth can-i delete configmaps -n finance
 no
+
 ```
 
 
@@ -589,7 +632,9 @@ no
 
 <details>
 <sumary>Click to view the YAML file.</sumary>
-```yaml
+
+``` yaml
+
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -634,7 +679,9 @@ subjects:
 - kind: ServiceAccount
   name: report-viewer
   namespace: finance
+
 ```
+
 </details>
 
 
@@ -649,7 +696,10 @@ subjects:
 
 ## CLI Commands
 
-```bash
+``` bash
+
+echo ""
+
 ```
 
 
@@ -657,7 +707,11 @@ subjects:
 
 <details>
 <sumary>Click to view the YAML file.</sumary>
-```yaml
+
+``` yaml
+---
+- name: test
+
 ```
 </details>
 
@@ -676,7 +730,10 @@ subjects:
 
 ## CLI Commands
 
-```bash
+``` bash
+
+echo "test"
+
 ```
 
 
@@ -684,7 +741,12 @@ subjects:
 
 <details>
 <sumary>Click to view the YAML file.</sumary>
-```yaml
+
+``` yaml
+
+---
+- name: test
+
 ```
 </details>
 
