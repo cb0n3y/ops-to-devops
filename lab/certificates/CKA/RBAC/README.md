@@ -2,7 +2,7 @@
 
 Here we just have some exercises related to RBAC
 
-**Exercise 1**: Basic RBAC Setup
+## Exercise 1: Basic RBAC Setup
 
 - Create a namespace called project-x.
 - Create a service account called data-viewer in the project-x namespace.
@@ -10,7 +10,7 @@ Here we just have some exercises related to RBAC
 - Create a rolebinding named bind-pod-reader that binds the pod-reader role to the data-viewer service account in the project-x namespace.
 - Prove that the data-viewer service account can get and list pods in the project-x namespace but cannot perform these actions on deployments.
 
-## CLI commands
+### CLI Commands
 
 ``` bash
 
@@ -27,7 +27,7 @@ yes
 
 ```
 
-## YAML File
+### YAML File
 
 <details>
 <summary>Click to view YAML file</summary>
@@ -83,7 +83,7 @@ subjects:
 </details>
 
 
-**Exercise 2**: Expanding Permissions
+## Exercise 2: Expanding Permissions
 
 - Create a namespace called dev-environment.
 - Create a service account called app-deployer in the dev-environment namespace.
@@ -92,7 +92,7 @@ subjects:
 Prove that the app-deployer service account can delete pods but cannot delete deployments in the dev-environment namespace.
 
 
-## CLI commands
+### CLI Commands
 
 
 ``` bash
@@ -101,7 +101,7 @@ echo "test"
 
 ```
 
-## YAML File
+### YAML File
 
 <details>
 <sumary>Click to view theYAML file.</sumary>
@@ -162,7 +162,7 @@ subjects:
 </details>
 
 
-**Exercise 3**: Cluster-Wide Permissions
+## Exercise 3: Cluster-Wide Permissions
 
 - Create a clusterrole called read-all-namespaces that grants get and list permissions to pods in all namespaces.
 - Create a service account called cluster-reader.
@@ -170,7 +170,7 @@ subjects:
 - Prove that the cluster-reader service account can get and list pods in all namespaces but cannot perform any action on deployments.
 
 
-## CLI Commands
+### CLI Commands
 
 ``` bash
 
@@ -179,7 +179,7 @@ echo "test"
 ```
 
 
-## YAML File
+### YAML File
 
 <details>
 <sumary>Click to view the YAML file.</sumary>
@@ -224,7 +224,7 @@ subjects:
 </details>
 
 
-**Exercise 4**: More Granular Permissions
+## Exercise 4: More Granular Permissions
 
 - Create a namespace called analytics.
 - Create a service account called report-generator in the analytics namespace.
@@ -232,7 +232,7 @@ subjects:
 - Create a rolebinding named bind-report-viewer that binds the report-viewer role to the report-generator service account in the analytics namespace.
 - Prove that the report-generator service account can get and list jobs and cronjobs, but cannot interact with pods in the analytics namespace.
 ^
-## CLI Commands
+### CLI Commands
 
 ``` bash
 
@@ -241,7 +241,7 @@ echo "test"
 ```
 
 
-## YAML File
+### YAML File
 
 <details>
 <sumary>Click to view the YAML file.</sumary>
@@ -298,14 +298,14 @@ subjects:
 </details>
 
 
-**Exercise 5**: ClusterRole with Elevated Permissions
+## Exercise 5: ClusterRole with Elevated Permissions
 
 - Create a clusterrole named cluster-admin-pods that grants create, get, list, delete, and update permissions to pods in all namespaces.
 - Create a service account called full-access-admin.
 - Bind the cluster-admin-pods ClusterRole to the full-access-admin service account using a clusterrolebinding.
 - Prove that the full-access-admin service account can create, get, list, delete, and update pods in all namespaces but cannot do the same for deployments.
 
-## CLI Commands
+### CLI Commands
 
 ``` bash
 
@@ -319,7 +319,7 @@ cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl apply -f clusterrole-
 ```
 
 
-## YAML File
+### YAML File
 
 <details>
 <sumary>Click to view the YAML file.</sumary>
@@ -368,7 +368,7 @@ subjects:
 </details>
 
 
-**Exercise 6**: Deny Specific Permissions
+## Exercise 6: Deny Specific Permissions
 
 - Create a service account called restricted-deployer in the production namespace.
 - Create a role called limited-pod-creator that grants create permissions only to pods in the production namespace.
@@ -377,7 +377,7 @@ subjects:
 - Prove that the restricted-deployer service account cannot create privileged pods in the production namespace but can create non-privileged pods.
 
 
-## CLI Commands
+### CLI Commands
 
 ``` bash
 
@@ -400,7 +400,7 @@ no
 ```
 
 
-## YAML File
+### YAML File
 
 <details>
 <sumary>Click to view the YAML file.</sumary>
@@ -456,7 +456,7 @@ subjects:
 </details>
 
 
-**Exercise 7**: Permissions with Multiple Roles
+## Exercise 7: Permissions with Multiple Roles
 
 - Create a namespace called staging-environment.
 - Create a service account called web-developer in the staging-environment namespace.
@@ -473,7 +473,7 @@ subjects:
 - Prove that the web-developer service account can get, list, and create deployments but cannot delete pods.
 
 
-## CLI Commands
+### CLI Commands
 
 ``` bash
 
@@ -507,7 +507,7 @@ no
 ```
 
 
-## YAML File
+### YAML File
 
 <details>
 <sumary>Click to view the YAML file.</sumary>
@@ -595,7 +595,7 @@ subjects:
 </details>
 
 
-**Exercise 8**: Impersonation and Fine-Grained Access
+## Exercise 8: Impersonation and Fine-Grained Access
 
 - Create a service account called report-viewer in the finance namespace.
 - Create a role called financial-reports with get and list permissions on configmaps in the finance namespace.
@@ -604,7 +604,7 @@ subjects:
 - Prove that the impersonated report-viewer can read configmaps but cannot perform any modifications (e.g., create, delete) to them.
 
 
-## CLI Commands
+### CLI Commands
 
 ``` bash
 
@@ -628,7 +628,7 @@ no
 ```
 
 
-## YAML File
+### YAML File
 
 <details>
 <sumary>Click to view the YAML file.</sumary>
@@ -685,7 +685,7 @@ subjects:
 </details>
 
 
-**Exercise 9**: Use of ServiceAccount with External Access
+## Exercise 9: Use of ServiceAccount with External Access
 
 - Create a service account named external-agent in the operations namespace.
 - Create a role called pod-monitor that grants the get, list, and watch permissions on pods in the operations namespace.
@@ -694,7 +694,7 @@ subjects:
 - Prove that the external-agent service account can watch pods in the operations namespace, even from an external machine.
 
 
-## CLI Commands
+### CLI Commands
 
 ``` bash
 
@@ -703,7 +703,7 @@ echo ""
 ```
 
 
-## YAML File
+### YAML File
 
 <details>
 <sumary>Click to view the YAML file.</sumary>
@@ -716,7 +716,7 @@ echo ""
 </details>
 
 
-**Exercise 10**: Advanced Role with Multiple Resources and APIGroup
+## Exercise 10: Advanced Role with Multiple Resources and APIGroup
 
 - Create a namespace called security.
 - Create a service account called sec-auditor in the security namespace.
@@ -728,7 +728,7 @@ echo ""
 - Bind the sec-audit role to the sec-auditor service account.
 - Prove that the sec-auditor service account can get and list secrets and auditlogs but cannot modify or create any of these resources.
 
-## CLI Commands
+### CLI Commands
 
 ``` bash
 
@@ -737,7 +737,7 @@ echo "test"
 ```
 
 
-## YAML File
+### YAML File
 
 <details>
 <sumary>Click to view the YAML file.</sumary>
