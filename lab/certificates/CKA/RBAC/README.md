@@ -14,15 +14,15 @@ Here we just have some exercises related to RBAC
 
 ``` bash
 
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$  kubectl create ns project-x -o yaml --dry-run=client [> project-x.yaml] # use only the last part of the command, if you want to save it in a yaml file
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> project-x.yam # optional if you want to put everything in a single file
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create sa data-viewer -n project-x -o yaml --dry-run=client >> project-x.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> project-x.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl kubectl create role pod-reader --resource=pods --verb=get,list -n project-x -oyaml --dry-run=client >> project-x.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> project-x.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create rolebinding bind-pod-reader --role=pod-reader --serviceaccount=project-x:data-viewer --dry-run=client -o yaml >> project-x.yaml
+ kubectl create ns project-x -o yaml --dry-run=client [> project-x.yaml] # use only the last part of the command, if you want to save it in a yaml file
+echo "---" >> project-x.yam # optional if you want to put everything in a single file
+kubectl create sa data-viewer -n project-x -o yaml --dry-run=client >> project-x.yaml
+echo "---" >> project-x.yaml
+kubectl kubectl create role pod-reader --resource=pods --verb=get,list -n project-x -oyaml --dry-run=client >> project-x.yaml
+echo "---" >> project-x.yaml
+kubectl create rolebinding bind-pod-reader --role=pod-reader --serviceaccount=project-x:data-viewer --dry-run=client -o yaml >> project-x.yaml
 
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:project-x:data-viewer auth can-i get pods -n project-x
+kubectl --as=system:serviceaccount:project-x:data-viewer auth can-i get pods -n project-x
 yes
 
 ```
@@ -309,12 +309,12 @@ subjects:
 
 ``` bash
 
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create sa full-access-admin --namespace="*" -o yaml --dry-run=client > clusterrole-with-elevated-permissions.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> clusterrole-with-elevated-permissions.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create clusterrole cluster-admin-pods --resource=pods --verb=create,get,list,delete --namespace="*" -o yaml --dry-run=client >> clusterrole-with-elevated-permissions.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> clusterrole-with-elevated-permissions.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create clusterrolebinding bind-full-access-admin --clusterrole=cluster-admin-pods --serviceaccount=*:full-access-admin -o yaml --dry-run=client >> clusterrole-with-elevated-permissions.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl apply -f clusterrole-with-elevated-permissions.yaml
+kubectl create sa full-access-admin --namespace="*" -o yaml --dry-run=client > clusterrole-with-elevated-permissions.yaml
+echo "---" >> clusterrole-with-elevated-permissions.yaml
+kubectl create clusterrole cluster-admin-pods --resource=pods --verb=create,get,list,delete --namespace="*" -o yaml --dry-run=client >> clusterrole-with-elevated-permissions.yaml
+echo "---" >> clusterrole-with-elevated-permissions.yaml
+kubectl create clusterrolebinding bind-full-access-admin --clusterrole=cluster-admin-pods --serviceaccount=*:full-access-admin -o yaml --dry-run=client >> clusterrole-with-elevated-permissions.yaml
+kubectl apply -f clusterrole-with-elevated-permissions.yaml
 
 ```
 
@@ -381,20 +381,18 @@ subjects:
 
 ``` bash
 
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create ns production -o yaml --dry-run=client > deny-specific-permissions.yaml 
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> deny-specific-permissions.yaml 
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create sa restricted-deployer -n production -o yaml --dry-run=client >> deny-specific-permissions.yaml  
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> deny-specific-permissions.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create role limited-pod-creator --reosurce=pods --verb=create -n production -o yaml --dry-run=client >> deny-specific-permissions.yaml 
-error: unknown flag: --reosurce
-See 'kubectl create role --help' for usage.
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create role limited-pod-creator --resource=pods --verb=create -n production -o yaml --dry-run=client >> deny-specific-permissions.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> deny-specific-permissions.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create rolebinding bind-limited-pod-creator --role=limited-pod-creator --serviceaccount=production:restricted-deployer -n production -o yaml --dry-run=client >> deny-specific-permissions.yaml
+kubectl create ns production -o yaml --dry-run=client > deny-specific-permissions.yaml 
+echo "---" >> deny-specific-permissions.yaml 
+kubectl create sa restricted-deployer -n production -o yaml --dry-run=client >> deny-specific-permissions.yaml  
+echo "---" >> deny-specific-permissions.yaml
+kubectl create role limited-pod-creator --reosurce=pods --verb=create -n production -o yaml --dry-run=client >> deny-specific-permissions.yaml 
+kubectl create role limited-pod-creator --resource=pods --verb=create -n production -o yaml --dry-run=client >> deny-specific-permissions.yaml
+echo "---" >> deny-specific-permissions.yaml
+kubectl create rolebinding bind-limited-pod-creator --role=limited-pod-creator --serviceaccount=production:restricted-deployer -n production -o yaml --dry-run=client >> deny-specific-permissions.yaml
 
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:production:restricted-deployer auth can-i create pods -n production
+kubectl --as=system:serviceaccount:production:restricted-deployer auth can-i create pods -n production
 yes
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:production:restricted-deployer auth can-i list pods -n production
+kubectl --as=system:serviceaccount:production:restricted-deployer auth can-i list pods -n production
 no
 
 ```
@@ -477,31 +475,31 @@ subjects:
 
 ``` bash
 
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create ns staging-environment -oyaml --dry-run=client > perm-with-multiple-roles.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> perm-with-multiple-roles.yam
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create sa web-developer -n staging-environment -oyaml --dry-run=client >> perm-with-multiple-roles.yaml 
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> perm-with-multiple-roles.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create role pod-viewer --resource=pods --verb=get,list -n staging-environment -oyaml --dry-run=client >> perm-with-multiple-roles.yaml 
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> perm-with-multiple-roles.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create role deployment-manager --resource=deployments --verb=get,list,create -n staging-environment -oyaml --dry-run=client >> perm-with-multiple-roles.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> perm-with-multiple-roles.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create rolebinding bind-pod-viewer --role=pod-viewer --serviceaccount=staging-environment:web-developer -n staging-environment -oyaml --dry-run=client >> perm-with-multiple-roles.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> perm-with-multiple-roles.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create rolebinding bind-deployment-manager --role=deployment-manager --serviceaccount=staging-environment:web-developer -n staging-environment -oyaml --dry-run=client >> perm-with-multiple-roles.yaml
+kubectl create ns staging-environment -oyaml --dry-run=client > perm-with-multiple-roles.yaml
+echo "---" >> perm-with-multiple-roles.yam
+kubectl create sa web-developer -n staging-environment -oyaml --dry-run=client >> perm-with-multiple-roles.yaml 
+echo "---" >> perm-with-multiple-roles.yaml
+kubectl create role pod-viewer --resource=pods --verb=get,list -n staging-environment -oyaml --dry-run=client >> perm-with-multiple-roles.yaml 
+echo "---" >> perm-with-multiple-roles.yaml
+kubectl create role deployment-manager --resource=deployments --verb=get,list,create -n staging-environment -oyaml --dry-run=client >> perm-with-multiple-roles.yaml
+echo "---" >> perm-with-multiple-roles.yaml
+kubectl create rolebinding bind-pod-viewer --role=pod-viewer --serviceaccount=staging-environment:web-developer -n staging-environment -oyaml --dry-run=client >> perm-with-multiple-roles.yaml
+echo "---" >> perm-with-multiple-roles.yaml
+kubectl create rolebinding bind-deployment-manager --role=deployment-manager --serviceaccount=staging-environment:web-developer -n staging-environment -oyaml --dry-run=client >> perm-with-multiple-roles.yaml
 
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:staging-environment:web-developer auth can-i list pods -n staging-environment
+kubectl --as=system:serviceaccount:staging-environment:web-developer auth can-i list pods -n staging-environment
 yes
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:staging-environment:web-developer auth can-i get pods -n staging-environment
+kubectl --as=system:serviceaccount:staging-environment:web-developer auth can-i get pods -n staging-environment
 yes
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:staging-environment:web-developer auth can-i create pods -n staging-environment
+kubectl --as=system:serviceaccount:staging-environment:web-developer auth can-i create pods -n staging-environment
 no
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:staging-environment:web-developer auth can-i get deployments -n staging-environment
+kubectl --as=system:serviceaccount:staging-environment:web-developer auth can-i get deployments -n staging-environment
 yes
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:staging-environment:web-developer auth can-i create deployments -n staging-environment
+kubectl --as=system:serviceaccount:staging-environment:web-developer auth can-i create deployments -n staging-environment
 yes
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:staging-environment:web-developer auth can-i list deployments -n staging-environment
+kubectl --as=system:serviceaccount:staging-environment:web-developer auth can-i list deployments -n staging-environment
 yes
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:staging-environment:web-developer auth can-i delete deployments -n staging-environment
+kubectl --as=system:serviceaccount:staging-environment:web-developer auth can-i delete deployments -n staging-environment
 no
 
 ```
@@ -608,21 +606,21 @@ subjects:
 
 ``` bash
 
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create ns finance -oyaml --dry-run=client > impersonation-and-fine-grained-access.yaml 
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> impersonation-and-fine-grained-access.yaml 
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create sa report-viewer -n finance -oyaml --dry-run=client >> impersonation-and-fine-grained-access.yaml 
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> impersonation-and-fine-grained-access.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create role financial-reports --resource=configmaps --verb=get,list -n finance -oyaml --dry-run=client >> impersonation-and-fine-grained-access.yaml 
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ echo "---" >> impersonation-and-fine-grained-access.yaml
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl create rolebinding bind-financial-reports --role=financial-reports --serviceaccount=finance:report-viewer -n finance -oyaml --dry-run=client >> impersonation-and-fine-grained-access.yaml
+kubectl create ns finance -oyaml --dry-run=client > impersonation-and-fine-grained-access.yaml 
+echo "---" >> impersonation-and-fine-grained-access.yaml 
+kubectl create sa report-viewer -n finance -oyaml --dry-run=client >> impersonation-and-fine-grained-access.yaml 
+echo "---" >> impersonation-and-fine-grained-access.yaml
+kubectl create role financial-reports --resource=configmaps --verb=get,list -n finance -oyaml --dry-run=client >> impersonation-and-fine-grained-access.yaml 
+echo "---" >> impersonation-and-fine-grained-access.yaml
+kubectl create rolebinding bind-financial-reports --role=financial-reports --serviceaccount=finance:report-viewer -n finance -oyaml --dry-run=client >> impersonation-and-fine-grained-access.yaml
 
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:finance:report-viewer auth can-i list configmaps -n finance
+kubectl --as=system:serviceaccount:finance:report-viewer auth can-i list configmaps -n finance
 yes
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:finance:report-viewer auth can-i get configmaps -n finance
+kubectl --as=system:serviceaccount:finance:report-viewer auth can-i get configmaps -n finance
 yes
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:finance:report-viewer auth can-i create configmaps -n finance
+kubectl --as=system:serviceaccount:finance:report-viewer auth can-i create configmaps -n finance
 no
-cb0n3y@cka-k8s-master:~/cka_exam_preparation/RBAC$ kubectl --as=system:serviceaccount:finance:report-viewer auth can-i delete configmaps -n finance
+kubectl --as=system:serviceaccount:finance:report-viewer auth can-i delete configmaps -n finance
 no
 
 ```
