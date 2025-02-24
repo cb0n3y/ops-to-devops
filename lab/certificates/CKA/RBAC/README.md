@@ -95,7 +95,10 @@ Prove that the app-deployer service account can delete pods but cannot delete de
 
 <details>
 <sumary>Click to view theYAML file.</sumary>
-```yaml
+
+
+``` yaml
+
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -142,7 +145,10 @@ subjects:
 - kind: ServiceAccount
   name: app-deployer
   namespace: dev-environment
+
 ```
+
+
 </details>
 
 
