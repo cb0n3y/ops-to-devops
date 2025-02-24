@@ -29,7 +29,8 @@ yes
 
 <details>
 <summary>Click to view YAML file</summary>
-```yaml
+
+``` yaml
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -74,6 +75,7 @@ subjects:
   name: data-viewer
   namespace: project-x
 ```
+
 </details>
 
 
