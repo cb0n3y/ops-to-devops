@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 
+# This program collects and prints the names of cats.
+
 cat_names = []
 
 while True:
-    print(f"Enter the name of cat {str(len(cat_names) + 1)} (Or enter nothing to stop.):")
+    print(f"Enter the name of cat {len(cat_names) + 1} (Or enter nothing to stop.):")
     name = input()
 
     if name == '':
@@ -13,4 +15,5 @@ while True:
 
 print('The cat names are: ')
 
-[print(name) for name in cat_names]
+for name in cat_names:
+    print(name)
