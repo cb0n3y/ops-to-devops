@@ -19,7 +19,7 @@ After that you have to edit ntwo diferent files:
 
 .. code-block:: bash
 
-    [ifuodown]
+    [ifupdown]
     managed=false   # before
     managed=true    # after
 
