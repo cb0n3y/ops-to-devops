@@ -14,7 +14,7 @@ Here we just have some exercises related to RBAC
 
 ``` bash
 
- kubectl create ns project-x -o yaml --dry-run=client [> project-x.yaml] # use only the last part of the command, if you want to save it in a yaml file
+kubectl create ns project-x -o yaml --dry-run=client [> project-x.yaml] # use only the last part of the command, if you want to save it in a yaml file
 echo "---" >> project-x.yam # optional if you want to put everything in a single file
 kubectl create sa data-viewer -n project-x -o yaml --dry-run=client >> project-x.yaml
 echo "---" >> project-x.yaml
