@@ -1,0 +1,9 @@
+[self]
+localhost
+
+[prom]
+dev-prometheus
+dev-grafana
+
+[monitoring:children]
+prom
