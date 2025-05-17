@@ -1,4 +1,1 @@
-rh_baseurl: "https://packagecloud.io/prometheus-rpm/release/el/$releasever/$basearch"
-rh_gpgkeys:
-  - "https://packagecloud.io/prometheus-rpm/release/gpgkey"
-  - "https://raw.githubusercontent.com/lest/prometheus-rpm/master/RPM-GPG-KEY-prometheus-rpm"
+
