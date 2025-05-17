@@ -7,6 +7,14 @@
     group: root
     mode: "0644"
 
+- name: Import Prometheus GPG keys
+  ansible.builtin.rpm_key:
+    state: present
+    key: "{{ item }}"
+  loop:
+    - https://packagecloud.io/prometheus-rpm/release/gpgkey
+    - https://raw.githubusercontent.com/lest/prometheus-rpm/master/RPM-GPG-KEY-prometheus-rpm
+
 - name: Install Prometheus on RedHat
   ansible.builtin.yum:
     name: "{{ prometheus_packages }}"
