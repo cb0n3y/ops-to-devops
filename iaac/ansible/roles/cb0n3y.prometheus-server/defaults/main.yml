@@ -6,5 +6,11 @@ prometheus_packages:
 prometheus_version: "2.51.2"
 prometheus_port: 9090
 node_exporter_port: 9091 # search for the right port
+
+rh_baseurl: "https://packagecloud.io/prometheus-rpm/release/el/$releasever/$basearch"
+rh_gpgkeys:
+  - "https://packagecloud.io/prometheus-rpm/release/gpgkey"
+  - "https://raw.githubusercontent.com/lest/prometheus-rpm/master/RPM-GPG-KEY-prometheus-rpm"
+
 prometheus_args: []
 node_exporter_args: []
