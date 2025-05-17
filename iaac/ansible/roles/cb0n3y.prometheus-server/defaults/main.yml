@@ -5,7 +5,7 @@ prometheus_packages:
 
 prometheus_version: "2.51.2"
 prometheus_port: 9090
-node_exporter_port: 9091 # search for the right port
+node_exporter_port: 9091
 
 rh_baseurl: "https://packagecloud.io/prometheus-rpm/release/el/$releasever/$basearch"
 rh_gpgkeys:
@@ -14,3 +14,48 @@ rh_gpgkeys:
 
 prometheus_args: []
 node_exporter_args: []
+
+# Global Prometheus config options
+prometheus_global:
+  scrape_interval: "15s"
+  evaluation_interval: "15s"
+
+# Alertmanagers - example with empty list by default
+alertmanagers: []
+
+# Rule files - empty by default, you can add your rules yaml files here
+rule_files: []
+
+# Scrape configs - example with Prometheus and node_exporter jobs
+scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets:
+          - "localhost:{{ prometheus_port }}"
+        labels:
+          app: "prometheus"
+
+  - job_name: "node_exporter"
+    scrape_interval: "30s"  # overrides global scrape_interval
+    static_configs:
+      - targets:
+          - "localhost:{{ node_exporter_port }}"
+        labels:
+          app: "node_exporter"
+
+  # Add more jobs like mysql_exporter, redis_exporter here as needed:
+  # - job_name: "mysql_exporter"
+  #   scrape_interval: "45s"
+  #   static_configs:
+  #     - targets:
+  #         - "mysqlserver1:9104"
+  #         - "mysqlserver2:9104"
+  #       labels:
+  #         app: "mysql_exporter"
+
+  # - job_name: "redis_exporter"
+  #   static_configs:
+  #     - targets:
+  #         - "redis1:9121"
+  #       labels:
+  #         app: "redis_exporter"
