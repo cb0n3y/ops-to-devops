@@ -11,9 +11,7 @@
   ansible.builtin.rpm_key:
     state: present
     key: "{{ item }}"
-  loop:
-    - https://packagecloud.io/prometheus-rpm/release/gpgkey
-    - https://raw.githubusercontent.com/lest/prometheus-rpm/master/RPM-GPG-KEY-prometheus-rpm
+  loop: "{{ rh_gpgkeys }}"
 
 - name: Install Prometheus on RedHat
   ansible.builtin.yum:
