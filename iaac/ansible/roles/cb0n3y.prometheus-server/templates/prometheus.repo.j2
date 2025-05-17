@@ -1,0 +1,8 @@
+[prometheus]
+name=prometheus
+baseurl={{ rh_baseurl }}
+repo_gpgcheck=1
+enabled=1
+gpgkey={{ rh_gpgkeys | join('\n        ') }}
+gpgcheck=1
+metadata_expire=300

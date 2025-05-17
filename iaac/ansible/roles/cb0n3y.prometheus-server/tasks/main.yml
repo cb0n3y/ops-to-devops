@@ -1,0 +1,11 @@
+---
+- name: Include OS-specific variables
+  ansible.builtin.include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Include RedHat setup
+  ansible.builtin.include_tasks: setup-RedHat.yml
+  when: ansible_os_family == "RedHat"
+
+- name: Include Debian setup
+  ansible.builtin.include_tasks: setup-Debian.yml
+  when: ansible_os_family == "Debian"

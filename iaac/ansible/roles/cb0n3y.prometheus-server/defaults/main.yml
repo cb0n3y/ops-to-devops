@@ -1,0 +1,10 @@
+---
+prometheus_packages:
+  - prometheus
+  - prometheus-node-exporter
+
+prometheus_version: "2.51.2"
+prometheus_port: 9090
+node_exporter_port: 9091 # search for the right port
+prometheus_args: []
+node_exporter_args: []
