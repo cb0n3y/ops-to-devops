@@ -37,13 +37,13 @@ def load_environment_config(env_name, service_type):
     if service_type not in all_envs[env_name]:
         raise ValueError(f"Service type '{service_type}' not defined in environment '{env_name}'.")
 
-    # return all_envs[env_name][service_type]
+    return all_envs[env_name][service_type]
 
     # ❗ Validate upload requirement
-    if args.upload and not args.ticket:
-        parser.error("[-] The --upload flag requires --ticket to be provided.") 
+    # if args.upload and not args.ticket:
+    #     parser.error("[-] The --upload flag requires --ticket to be provided.") 
 
-    return args
+    # return args
 
 
 
