@@ -36,11 +36,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = BOX_CPUS
     end
 
-    grafana.vm.provision "shell", path: "shared-scripts/create_own_user.sh"
+    grafana.vm.provision "shell", path: "../../shared-scripts/create_own_user.sh"
 
     # Pass ports as a space-separated string
     grafana.vm.provision "shell",
-      path: "shared-scripts/set_fw_rules.sh",
+      path: "../../shared-scripts/set_fw_rules.sh",
       env: { "PORTS" => PORTS.join(" ") }
   end
 end
