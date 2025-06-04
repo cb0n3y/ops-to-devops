@@ -37,11 +37,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     prometheus.vm.provision :shell, path: "scripts/prom-setup.sh"
-    prometheus.vm.provision :shell, path: "shared-scripts/create_own_user.sh"
+    prometheus.vm.provision :shell, path: "../../shared-scripts/create_own_user.sh"
 
     # Pass ports as a space-separated string
     prometheus.vm.provision "shell",
-      path: "shared-scripts/set_fw_rules.sh",
+      path: "../../shared-scripts/set_fw_rules.sh",
       env: { "PORTS" => PORTS.join(" ") }
   end
 end
