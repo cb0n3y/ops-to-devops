@@ -1,9 +1,10 @@
 #!/bin/bash
 
-set e
+set -e
 
-USER_NAME=""
-COMMENT=""
+# Use passed-in env vars or default
+USER_NAME="${USER_NAME:-}"
+COMMENT="${COMMENT:-}"
 
 create_user() {
     echo -e "\n[+] Creating required user..."
