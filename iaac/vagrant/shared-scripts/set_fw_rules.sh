@@ -4,7 +4,7 @@ set e
 
 set_fw_rules() {
     # Use ports from environment variable or fall back to default
-    IFS=' ' read -r -a ports <<< "${PORTS:-3000 9100}"
+    IFS=' ' read -r -a ports <<< "${PORTS: 3000 9100}"
 
     echo -e "\n[+] Adding required firewall rules for ports: ${ports[*]}"
 
