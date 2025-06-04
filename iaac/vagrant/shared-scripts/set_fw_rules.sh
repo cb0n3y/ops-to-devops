@@ -1,10 +1,16 @@
 #!/bin/bash
 
-set e
+set -e
 
 set_fw_rules() {
-    # Use ports from environment variable or fall back to default
-    IFS=' ' read -r -a ports <<< "${PORTS: 3000 9100}"
+    # Ensure PORTS is passed correctly
+    if [ -z "$PORTS" ]; then
+        echo "ERROR: PORTS is not set. Exiting."
+        exit 1
+    fi
+
+    # Split the PORTS string into an array using spaces as delimiter
+    IFS=' ' read -r -a ports <<< "$PORTS"
 
     echo -e "\n[+] Adding required firewall rules for ports: ${ports[*]}"
 
