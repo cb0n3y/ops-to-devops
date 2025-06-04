@@ -1,0 +1,39 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+PROM_SRV = "xxx.xxx.xxx.xxx"
+
+BOX_CPUS = "2"
+BOX_RAM = "4096"
+
+
+VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/centos9s"
+  config.vm.box_check_update = true
+  config.ssh.forward_agent = true
+
+  config.vm.provision "shell", inline: %Q{
+    localectl set-keymap de-deadgraveacute
+    echo "fastestmirror=True" >> /etc/dnf/dnf.conf
+    echo "max_parallel_downloads=10" >> /etc/dnf/dnf.conf
+    dnf makecache
+    dnf -y update
+  }
+
+  config.vm.define "prometheus" do |prometheus|
+    prometheus.vm.hostname = "dev-prometheus01"
+    prometheus.vm.network "public_network", ip: PROM_SRV
+    prometheus.vm.provider "virtualbox" do |vb|
+      vb.gui = false
+      vb.name = "dev-prometheus01"
+      vb.customize ["modifyvm", :id, "--groups", "/DevOps-Lab/Monitoring"]
+      vb.memory = BOX_RAM
+      vb.cpus = BOX_CPUS
+    end
+    
+    #prometheus.vm.provision :shell, path: "scripts/prom-setup.sh"
+  end
+end
