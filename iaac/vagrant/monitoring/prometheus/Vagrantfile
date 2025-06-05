@@ -3,7 +3,7 @@
 
 PROM_SRV = "xxx.xxx.xxx.xxx"
 
-BOX_CPUS = 2          # should be integer, not string
+BBOX_CPUS = 2          # should be integer, not string
 BOX_RAM = 4096        # should be integer, not string
 PORTS = [9090, 9100]  # ports that Prometheus and node_exporter need open
 
@@ -25,19 +25,28 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   SHELL
 
   config.vm.define "prometheus" do |prometheus|
-    prometheus.vm.hostname = "dev-prometheus01"
+    prometheus.vm.hostname = "dev-prometheus02"
     prometheus.vm.network "public_network", ip: PROM_SRV
 
     prometheus.vm.provider "virtualbox" do |vb|
       vb.gui = false
-      vb.name = "dev-prometheus01"
+      vb.name = "dev-prometheus02"
       vb.customize ["modifyvm", :id, "--groups", "/DevOps-Lab/Monitoring"]
       vb.memory = BOX_RAM
       vb.cpus = BOX_CPUS
     end
 
-    prometheus.vm.provision :shell, path: "scripts/prom-setup.sh"
-    prometheus.vm.provision :shell, path: "../../shared-scripts/create_own_user.sh"
+    prometheus.vm.provision :shell,
+      path: "scripts/prom-setup.sh",
+      env: {
+        "PROM_SRV" => PROM_SRV,
+      }
+    prometheus.vm.provision :shell,
+      path: "../../shared-scripts/create_own_user.sh",
+      env: {
+        "USER_NAME" => "cb0n3y",
+        "USER_PASSWORD" => ENV['USER_PASSWORD']
+      }
 
     # Pass ports as a space-separated string
     prometheus.vm.provision "shell",
