@@ -12,6 +12,37 @@ Welcome to the **Ops to DevOps** repository! This project documents my journey t
 
 ---
 
+## 🧩 Current Focus
+
+- Modular Vagrantfiles for Grafana and Prometheus  
+- Shared and app-specific setup scripts  
+- Gradual migration to Ansible for automation  
+- Terraform-based IaaC and Cloud automation (coming soon)
+
+---
+
+## 🏁 Long-Term Goals
+
+- Build a clean, reproducible DevOps lab environment  
+- Prepare for certifications (CKA, AZ-104)  
+- Showcase end-to-end CI/CD, monitoring, and IaC solutions  
+- Follow open-source and GitHub community standards
+
+---
+
+## 📌 Topics Covered
+
+- 🧱 Infrastructure as Code (Vagrant → Ansible → Terraform)  
+- 🔍 Monitoring & Observability (Prometheus, Grafana)  
+- ⚙️ Automation & Configuration  
+- 🚀 CI/CD Pipelines (GitHub Actions, Jenkins)  
+- 📦 Containerization & Kubernetes  
+- 🔐 Security, Documentation, and Collaboration
+
+> ⚠️ This repo is a living lab — expect work-in-progress, breaking changes, and ongoing refinements as learning evolves.
+
+---
+
 ## 📑 Table of Contents
 
 - [Repository Structure](#repository-structure)
