@@ -4,8 +4,42 @@
 ![GitHub Repo Size](https://img.shields.io/github/repo-size/cb0n3y/ops-to-devops)
 ![Last Commit](https://img.shields.io/github/last-commit/cb0n3y/ops-to-devops)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/cb0n3y/ops-to-devops/ci.yml?label=CI%2FCD)
+![DevOps Journey](https://img.shields.io/badge/devops-journey-blueviolet)
+![Goal: CKA](https://img.shields.io/badge/goal-cka-orange)
+![Goal: AZ-104](https://img.shields.io/badge/goal-az104-blue)
 
 Welcome to the **Ops to DevOps** repository! This project documents my journey transitioning from a System Administrator to a DevOps Engineer, showcasing the skills, tools, and projects I've developed along the way.
+
+---
+
+## 🧩 Current Focus
+
+- Modular Vagrantfiles for Grafana and Prometheus  
+- Shared and app-specific setup scripts  
+- Gradual migration to Ansible for automation  
+- Terraform-based IaaC and Cloud automation (coming soon)
+
+---
+
+## 🏁 Long-Term Goals
+
+- Build a clean, reproducible DevOps lab environment  
+- Prepare for certifications (CKA, AZ-104)  
+- Showcase end-to-end CI/CD, monitoring, and IaC solutions  
+- Follow open-source and GitHub community standards
+
+---
+
+## 📌 Topics Covered
+
+- 🧱 Infrastructure as Code (Vagrant → Ansible → Terraform)  
+- 🔍 Monitoring & Observability (Prometheus, Grafana)  
+- ⚙️ Automation & Configuration  
+- 🚀 CI/CD Pipelines (GitHub Actions, Jenkins)  
+- 📦 Containerization & Kubernetes  
+- 🔐 Security, Documentation, and Collaboration
+
+> ⚠️ This repo is a living lab — expect work-in-progress, breaking changes, and ongoing refinements as learning evolves.
 
 ---
 
