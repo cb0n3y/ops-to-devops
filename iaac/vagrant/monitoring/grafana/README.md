@@ -1,12 +1,21 @@
 # Grafana VM (Vagrant)
 
-This Vagrant setup provisions a CentOS 9 Stream virtual machine with GRafana installed and configured for local monitoring and testing.
+This Vagrant setup provisions a CentOS 9 Stream virtual machine with Grafana installed and configured for local monitoring and testing.
 
 ## 📦 Requirements
 
 - VirtualBox
 - Vagrant
 - Internet connection (for package installation)
+
+### ⚠️ Before You Start
+
+Export your password environment variable to avoid exposing secrets:
+
+```bash
+export USER_PASSWORD="your_secure_password"
+```
+
 
 ## 🚀 Usage
 
@@ -28,7 +37,7 @@ vagrant halt
 vagrant destroy
 ```
 
-Change to acces Grafana UI at: ttp://<your-grafanas-ip>:3000
+Change to acces Grafana UI at: http://<your-grafanas-ip>:3000
 
 ## 🔧 Configuration
 

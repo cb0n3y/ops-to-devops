@@ -8,6 +8,14 @@ This Vagrant setup provisions a CentOS 9 Stream virtual machine with Prometheus 
 - Vagrant
 - Internet connection (for package installation)
 
+### ⚠️ Before You Start
+
+Export your password environment variable to avoid exposing secrets:
+
+```bash
+export USER_PASSWORD="your_secure_password"
+```
+
 ## 🚀 Usage
 
 1. Start the VM

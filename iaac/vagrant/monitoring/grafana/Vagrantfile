@@ -1,37 +1,53 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-GRAF_SRV = "xxx.xxx.xxx.xxx"
+GRAF_SRV = "192.168.178.100"
 
-BOX_CPUS = "2"
-BOX_RAM = "4096"
-
-VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
-VAGRANTFILE_API_VERSION = "2"
+BOX_CPUS = 2          # should be integer, not string
+BOX_RAM = 4096        # should be integer, not string
+PORTS = [3000, 9100]  # Ports you want to pass for Grafana
 
 Vagrant.configure("2") do |config|
   config.vm.box = "generic/centos9s"
   config.vm.box_check_update = true
   config.ssh.forward_agent = true
 
-  config.vm.provision "shell", inline: %Q{
+  # Provisioning block
+  config.vm.provision "shell", inline: <<-SHELL
     localectl set-keymap de-deadgraveacute
     # Configuring DNF
     echo "fastestmirror=True" >> /etc/dnf/dnf.conf
     echo "max_parallel_downloads=10" >> /etc/dnf/dnf.conf
     dnf makecache
     dnf -y update
-  }
+  SHELL
 
   config.vm.define "grafana" do |grafana|
-    grafana.vm.hostname = "grafana01"
+    grafana.vm.hostname = "grafana02"
     grafana.vm.network "public_network", ip: GRAF_SRV
+
     grafana.vm.provider "virtualbox" do |vb|
       vb.gui = false
-      vb.name = "grafana01"
+      vb.name = "grafana02"
       vb.customize ["modifyvm", :id, "--groups", "/DevOps-Lab/Monitoring"]
-      vb.customize ["modifyvm", :id, "--memory", BOX_RAM]
-      vb.customize ["modifyvm", :id, "--cpus", BOX_CPUS]
+      vb.memory = BOX_RAM
+      vb.cpus = BOX_CPUS
     end
+
+    grafana.vm.provision "shell", path: "scripts/graf-setup.sh"
+
+    # This will ensure the user is created
+    grafana.vm.provision "shell",
+      path: "../../shared-scripts/create_own_user.sh",
+      env: {
+        "USER_NAME" => "cb0n3y",
+        "COMMENT" => "cb0n3y@gmail.com",
+        "USER_PASSWORD" => ENV["USER_PASSWORD"]
+      }
+
+    # Pass the PORTS variable
+    grafana.vm.provision :shell,
+      path: "../../shared-scripts/set_fw_rules.sh",
+      env: { "PORTS" => PORTS.join(" ") }
   end
 end
