@@ -1,27 +1,38 @@
-name: Bug Report
-description: Report an issue with the scripts, setup, or tools.
-title: "[Bug]: "
-labels: [bug]
-assignees: []
+---
+name: Bug report
+about: Create a report to help us improve
+title: ''
+labels: ''
+assignees: ''
 
-body:
-  - type: markdown
-    attributes:
-      value: |
-        Please provide detailed information so the issue can be reproduced and resolved.
+---
 
-  - type: textarea
-    id: what-happened
-    attributes:
-      label: What happened?
-      description: Describe the issue you encountered.
-      placeholder: Describe the bug...
-    validations:
-      required: true
+**Describe the bug**
+A clear and concise description of what the bug is.
 
-  - type: input
-    id: environment
-    attributes:
-      label: Environment
-      description: What OS, Vagrant version, or tool versions are you using?
-      placeholder: "Ubuntu 22.04, Vagrant 2.4.0, VirtualBox 7.x"
+**To Reproduce**
+Steps to reproduce the behavior:
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
+
+**Expected behavior**
+A clear and concise description of what you expected to happen.
+
+**Screenshots**
+If applicable, add screenshots to help explain your problem.
+
+**Desktop (please complete the following information):**
+ - OS: [e.g. iOS]
+ - Browser [e.g. chrome, safari]
+ - Version [e.g. 22]
+
+**Smartphone (please complete the following information):**
+ - Device: [e.g. iPhone6]
+ - OS: [e.g. iOS8.1]
+ - Browser [e.g. stock browser, safari]
+ - Version [e.g. 22]
+
+**Additional context**
+Add any other context about the problem here.
