@@ -1,0 +1,61 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+GRAF_SRV = "192.168.178.100"
+PROM_SRV = "192.168.178.101"
+
+BOX_CPUS = 2          # should be integer, not string
+BOX_RAM = 4096        # should be integer, not string
+PORTS = [3000, 9100]  # Ports you want to pass for Grafana
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/centos9s"
+  config.vm.box_check_update = true
+  config.ssh.forward_agent = true
+
+  # Provisioning block
+  config.vm.provision "shell", inline: <<-SHELL
+    localectl set-keymap de-deadgraveacute
+    # Configuring DNF
+    echo "fastestmirror=True" >> /etc/dnf/dnf.conf
+    echo "max_parallel_downloads=10" >> /etc/dnf/dnf.conf
+    dnf makecache
+    dnf -y update
+    echo "" >> /etc/hosts
+    echo "$PROM_SRV     dev-prometheus01.fritz.box  dev-prometheus02" >> /etc/hosts
+    echo "$GRAF_SRV     dev-grafana01.fritz.box  dev-grafana02" >> /etc/hosts
+  SHELL
+
+  config.vm.define "grafana" do |grafana|
+    grafana.vm.hostname = "grafana02"
+    grafana.vm.network "public_network", ip: GRAF_SRV
+
+    grafana.vm.provider "virtualbox" do |vb|
+      vb.gui = false
+      vb.name = "grafana02"
+      vb.customize ["modifyvm", :id, "--groups", "/DevOps-Lab/Monitoring"]
+      vb.memory = BOX_RAM
+      vb.cpus = BOX_CPUS
+    end
+
+    grafana.vm.provision "shell", path: "scripts/graf-setup.sh"
+
+    # This will ensure the user is created
+    grafana.vm.provision "shell",
+      path: "../../shared-scripts/create_own_user.sh",
+      env: {
+        "USER_NAME" => "cb0n3y",
+        "COMMENT" => "cb0n3y@gmail.com",
+        "USER_PASSWORD" => ENV["USER_PASSWORD"]
+      }
+
+    # Pass the PORTS variable
+    grafana.vm.provision :shell,
+      path: "../../shared-scripts/set_fw_rules.sh",
+      env: { "PORTS" => PORTS.join(" ") }
+    
+    # Install node_exporter
+    grafana.vm.provision :shell,
+      path: "../../shared-scripts/exporters/install_node_exporter.sh"
+  end
+end
