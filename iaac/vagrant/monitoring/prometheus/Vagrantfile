@@ -3,7 +3,7 @@
 
 PROM_SRV = "xxx.xxx.xxx.xxx"
 
-BBOX_CPUS = 2          # should be integer, not string
+BOX_CPUS = 2          # should be integer, not string
 BOX_RAM = 4096        # should be integer, not string
 PORTS = [9090, 9100]  # ports that Prometheus and node_exporter need open
 
@@ -52,5 +52,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     prometheus.vm.provision "shell",
       path: "../../shared-scripts/set_fw_rules.sh",
       env: { "PORTS" => PORTS.join(" ") }
+    
+    prometheus.vm.provision :shell,
+      path: "../../shared-scripts/prometheus/deploy_prometheus_config.sh"  
   end
 end
