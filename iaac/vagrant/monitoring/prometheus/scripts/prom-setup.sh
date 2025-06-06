@@ -7,8 +7,8 @@ NODE_EXPORTER_VERSION="1.9.0"
 USER="prometheus"
 GROUP="prometheus"
 
-PROM_SRV="xxx.xxx.xxx.xxx"
-GRAF_SRV="xxx.xxx.xxx.xxx"
+PROM_SRV="192.168.178.101"
+GRAF_SRV="192.168.178.100"
 PORTS=(9090 9100)
 
 create_hosts_file() {

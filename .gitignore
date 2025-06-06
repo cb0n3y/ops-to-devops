@@ -1,21 +1,27 @@
-# Vagrant
-.vagrant/
+# Ignore Vagrant state directories
+**/.vagrant/
 
-# Logs
-*.log
+# Ignore box files
+*.box
 
-# System files
-.DS_Store
-Thumbs.db
+# Shared scripts: ignore generated logs or temp files
+**/*.log
+**/*.bak
+**/*.tmp
 
-# Shell script backups or editor temp files
-*.swp
-*.swo
-*~
+# IDE/editor junk
+**/*.swp
+**/*.swo
+**/.idea/
+**/.vscode/
+**/.DS_Store
 
-# Ignore any temporary outputs
-*.out
+# Shell history or secrets (if ever created)
+**/*.env
+**/*.secret
 
-# Secrets or config overrides (if any)
-.env
-*.local
+# Optional: Python/Ansible/Terraform (if used later)
+__pycache__/
+*.pyc
+.terraform/
+*.tfstate*
