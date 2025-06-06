@@ -1,32 +1,10 @@
 #!/bin/bash
 
-set e
+set -euo pipefail
 
 PROM_SRV="xxx.xxx.xxx.xxx"
 GRAF_SRV="xxx.xxx.xxx.xxx"
 PORTS=(3000 9100)
-
-# create_repository() {
-#     echo -e "\n[+] Creating Prometheus repository ..."
-
-#     if [[ -e "$TARGET_FILE" ]]; then
-#         echo "The repo file already exists."
-#     else
-#         cat > "$TARGET_FILE" <<EOF
-# [prometheus]
-# name=prometheus
-# baseurl=https://packagecloud.io/prometheus-rpm/release/el/\$releasever/\$basearch
-# repo_gpgcheck=1
-# enabled=1
-# gpgkey=https://packagecloud.io/prometheus-rpm/release/gpgkey
-#         https://raw.githubusercontent.com/lest/prometheus-rpm/master/RPM-GPG-KEY-prometheus-rpm
-# gpgcheck=1
-# metadata_expire=300
-# EOF
-#     fi
-
-#     echo -e "\n[+] Repository created"
-# }
 
 # Function to install Grafana repository
 create_grafana_repository() {
