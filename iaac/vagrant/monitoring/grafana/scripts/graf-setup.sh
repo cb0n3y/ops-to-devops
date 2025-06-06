@@ -2,8 +2,6 @@
 
 set -euo pipefail
 
-PROM_SRV="xxx.xxx.xxx.xxx"
-GRAF_SRV="xxx.xxx.xxx.xxx"
 PORTS=(3000 9100)
 
 # Function to install Grafana repository
@@ -30,14 +28,6 @@ EOF
     echo -e "\n[+] Grafana repository added."
 }
 
-create_hosts_file() {
-    echo -e "\n[+] Generating hosts file for DNS resolution..."
-
-    echo "" >> /etc/hosts
-    echo "$PROM_SRV     dev-prometheus01.fritz.box  dev-prometheus01" >> /etc/hosts
-    echo "$GRAF_SRV     dev-grafana01.fritz.box  dev-grafana01" >> /etc/hosts
-}
-
 install_packages() {
     echo -e "\n[+] Installing packages..."
 
@@ -49,4 +39,3 @@ install_packages() {
 # create_repository
 create_grafana_repository
 install_packages
-create_hosts_file
