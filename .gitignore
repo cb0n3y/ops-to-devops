@@ -1,0 +1,21 @@
+# Vagrant
+.vagrant/
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Shell script backups or editor temp files
+*.swp
+*.swo
+*~
+
+# Ignore any temporary outputs
+*.out
+
+# Secrets or config overrides (if any)
+.env
+*.local
