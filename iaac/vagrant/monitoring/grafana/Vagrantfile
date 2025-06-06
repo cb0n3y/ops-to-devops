@@ -49,5 +49,9 @@ Vagrant.configure("2") do |config|
     grafana.vm.provision :shell,
       path: "../../shared-scripts/set_fw_rules.sh",
       env: { "PORTS" => PORTS.join(" ") }
+    
+    # Install node_exporter
+    grafana.vm.provision :shell,
+      path: "../../shared-scripts/exporters/install_node_exporter.sh"
   end
 end
