@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
     master.vm.hostname = "dev-k8s-master"
     master.vm.network "public_network", ip: MASTER_SRV
 
-    master-vm.define "virtualbox" do |vb|
+    master.vm.define "virtualbox" do |vb|
       vb.gui = false
       vb.name = "dev-k8s-master"
       vb.customize ["modifyvm", :id, "--groups", "/DevOps-Lab/K8S"]
