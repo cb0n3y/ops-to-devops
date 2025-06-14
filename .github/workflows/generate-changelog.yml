@@ -1,0 +1,40 @@
+name: Generate Changelog on Tag
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install git-cliff
+        run: |
+          curl -sSL https://github.com/orhun/git-cliff/releases/latest/download/git-cliff-x86_64-unknown-linux-gnu.tar.gz | tar -xz
+          sudo mv git-cliff /usr/local/bin/
+
+      - name: Generate changelog
+        run: |
+          git-cliff --config .git-cliff.toml -o CHANGELOG.md
+
+      - name: Commit and push changelog
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add CHANGELOG.md
+          if ! git diff --cached --quiet; then
+            git commit -m "docs(changelog): update for ${{ github.ref_name }}"
+            git push origin HEAD
+          else
+            echo "No changes to commit"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
