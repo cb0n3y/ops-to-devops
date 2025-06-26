@@ -1,14 +1,13 @@
 ---
-
 name: Generate Changelog on Tag
 
 on:
-  push:
+  "push":
     tags:
       - 'v*'
 
 permissions:
-  contents: write
+  contents: "write"
 
 jobs:
   changelog:
