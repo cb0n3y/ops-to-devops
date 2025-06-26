@@ -24,7 +24,9 @@ jobs:
           ARCHIVE="git-cliff-${VERSION}-${ARCH}.tar.gz"
           GIT_CLIFF_URL="https://github.com/orhun/git-cliff/releases/download/v${VERSION}/${ARCHIVE}"
           curl -sSL "$GIT_CLIFF_URL" -o git-cliff
-          sudo mv git-cliff /usr/local/bin/
+          tar -xf git-cliff
+          sudo mv git-cliff-"${VERSION}"/git-cliff /usr/local/bin/
+          sudo chmod +x /usr/local/bin/git-cliff
 
       - name: Generate changelog
         run: |
