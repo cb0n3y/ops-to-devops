@@ -19,7 +19,10 @@ jobs:
 
       - name: Install git-cliff
         run: |
-          GIT_CLIFF_URL="https://github.com/orhun/git-cliff/releases/latest/download/git-cliff-x86_64-unknown-linux-gnu.tar.gz"
+          VERSION="2.9.1"
+          ARCH="x86_64-unknown-linux-gnu"
+          ARCHIVE="git-cliff-${VERSION}-${ARCH}.tar.gz"
+          GIT_CLIFF_URL="https://github.com/orhun/git-cliff/releases/download/v${VERSION}/${ARCHIVE}"
           curl -sSL "$GIT_CLIFF_URL" | tar -xz
           sudo mv git-cliff /usr/local/bin/
 
