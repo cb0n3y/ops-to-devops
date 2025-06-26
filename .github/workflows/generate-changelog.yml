@@ -44,7 +44,7 @@ jobs:
           git add CHANGELOG.md
           if ! git diff --cached --quiet; then
             git commit -m "docs(changelog): update for ${{ github.ref_name }}"
-            git push origin HEAD
+            git push origin main
           else
             echo "No changes to commit"
           fi
