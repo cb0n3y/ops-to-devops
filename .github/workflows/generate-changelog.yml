@@ -39,7 +39,8 @@ jobs:
           git config user.email "actions@github.com" && \
           git add CHANGELOG.md &&\
           if ! git diff --cached --quiet; then \
-            git commit -m "docs(changelog): update for ${{ github.ref_name }}" && \
+            MSG="docs(changelog): update for ${{ github.ref_name }}" && \
+            git commit -m "$MSG" && \
             git push origin main;  \
           else
             echo "No changes to commit"; \
