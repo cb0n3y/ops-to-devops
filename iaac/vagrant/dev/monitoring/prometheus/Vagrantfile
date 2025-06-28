@@ -46,7 +46,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         "PROM_SRV" => PROM_SRV,
       }
     prometheus.vm.provision :shell,
-      path: "../../shared-scripts/create_own_user.sh",
+      path: "../../../shared-scripts/create_own_user.sh",
       env: {
         "USER_NAME" => "cb0n3y",
         "USER_PASSWORD" => ENV['USER_PASSWORD']
@@ -54,12 +54,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Pass ports as a space-separated string
     prometheus.vm.provision "shell",
-      path: "../../shared-scripts/set_fw_rules.sh",
+      path: "../../../shared-scripts/set_fw_rules.sh",
       env: { "PORTS" => PORTS.join(" ") }
     
     prometheus.vm.provision "file", source: "../../shared-scripts/prometheus/prometheus.yml", destination: "/home/vagrant/prometheus.yml"
 
     prometheus.vm.provision :shell,
-      path: "../../shared-scripts/prometheus/deploy_prometheus_config.sh"  
+      path: "../../../shared-scripts/prometheus/deploy_prometheus_config.sh"  
   end
 end
