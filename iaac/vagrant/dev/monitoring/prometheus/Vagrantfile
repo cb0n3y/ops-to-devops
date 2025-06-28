@@ -24,8 +24,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     dnf makecache
     dnf -y update
     echo "" >> /etc/hosts
-    echo "$PROM_SRV     dev-prometheus01.fritz.box  dev-prometheus01" >> /etc/hosts
-    echo "$GRAF_SRV     dev-grafana01.fritz.box  dev-grafana01" >> /etc/hosts
+    echo "$PROM_SRV     dev-prometheus02.fritz.box  dev-prometheus02" >> /etc/hosts
+    echo "$GRAF_SRV     dev-grafana02.fritz.box  dev-grafana02" >> /etc/hosts
   SHELL
 
   config.vm.define "prometheus" do |prometheus|
