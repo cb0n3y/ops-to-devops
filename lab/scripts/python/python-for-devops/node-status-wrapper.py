@@ -6,7 +6,7 @@ build skills for Python for DevOps.
 
 
 import shutil
-from subprocess import run, PIPE
+from subprocess import run, PIPE, CalledProcessError
 
 
 def get_node_status():
