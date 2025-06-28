@@ -45,7 +45,6 @@ Vagrant.configure("2") do |config|
       path: "../../shared-scripts/create_own_user.sh",
       env: {
         "USER_NAME" => "cb0n3y",
-        "COMMENT" => "cb0n3y@gmail.com",
         "USER_PASSWORD" => ENV["USER_PASSWORD"]
       }
 
