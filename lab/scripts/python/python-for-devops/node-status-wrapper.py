@@ -13,11 +13,13 @@ def get_node_status():
     """
     Wrappper for kubectl get nodes
     """
-    if shutil.which('kubectl'):
-        cmd = run(['kubectl', 'get', 'nodes'], check=True, stdout=PIPE, stderr=PIPE, text=True)
+    if shutil.which("kubectl"):
+        cmd = run(
+            ["kubectl", "get", "nodes"], check=True, stdout=PIPE, stderr=PIPE, text=True
+        )
         print(cmd.stdout)
     else:
-        print('Kubectl is not installed.')
+        print("Kubectl is not installed.")
 
 
 def main():
@@ -29,5 +31,5 @@ def main():
         print("[!] kubectl not found (unexpected).")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
