@@ -42,7 +42,7 @@ Vagrant.configure("2") do |config|
 
     # This will ensure the user is created
     grafana.vm.provision "shell",
-      path: "../../shared-scripts/create_own_user.sh",
+      path: "../../../shared-scripts/create_own_user.sh",
       env: {
         "USER_NAME" => "cb0n3y",
         "USER_PASSWORD" => ENV["USER_PASSWORD"]
@@ -50,12 +50,12 @@ Vagrant.configure("2") do |config|
 
     # Pass the PORTS variable
     grafana.vm.provision :shell,
-      path: "../../shared-scripts/set_fw_rules.sh",
+      path: "../../../shared-scripts/set_fw_rules.sh",
       env: { "PORTS" => PORTS.join(" ") }
 
     # Install node_exporter
     grafana.vm.provision :shell,
-      path: "../../shared-scripts/exporters/install_node_exporter.sh"
+      path: "../../../shared-scripts/exporters/install_node_exporter.sh"
 
     # Add Prometheus data source to Grafana
     grafana.vm.synced_folder "provisioning/", "/tmp/grafana-provisioning"
