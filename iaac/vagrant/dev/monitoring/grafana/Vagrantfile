@@ -71,7 +71,7 @@ Vagrant.configure("2") do |config|
     grafana.vm.provision "shell", inline: <<-SHELL
       echo "Provisioning Grafana dashboards..."
       mkdir -p /etc/grafana/provisioning/{dashboards,datasources}
-      cp /tmp/grafana-provisioning/dashboards.yml /etc/grafana/provisioning/dashboards/
+      cp /tmp/grafana-provisioning/dashboards.yml /etc/grafana/provisioning/
       cp /tmp/grafana-provisioning/dashboards/*.json /etc/grafana/provisioning/dashboards/
       chown -R root:grafana /etc/grafana/provisioning/dashboards
       chmod -R 644 /etc/grafana/provisioning/dashboards/*
