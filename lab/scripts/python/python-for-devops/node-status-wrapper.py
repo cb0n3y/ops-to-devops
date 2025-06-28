@@ -13,11 +13,6 @@ def get_node_status():
     """
     Wrappper for kubectl get nodes
     """
-    # Here we pass the commands as a string because we are using shell=true
-    # Only use shell=true if you are working with shell stuff heavily,
-    # like piping and so on. 
-    #cmd = run(['kubectl get nodes'], shell=True, check=True)
-    # Here we pass the command and option as a list without shell=true
     if shutil.which('kubectl'):
         cmd = run(['kubectl', 'get', 'nodes'], check=True, stdout=PIPE, stderr=PIPE, text=True)
         print(cmd.stdout)
