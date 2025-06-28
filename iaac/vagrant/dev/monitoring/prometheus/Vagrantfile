@@ -57,7 +57,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       path: "../../../shared-scripts/set_fw_rules.sh",
       env: { "PORTS" => PORTS.join(" ") }
     
-    prometheus.vm.provision "file", source: "../../shared-scripts/prometheus/prometheus.yml", destination: "/home/vagrant/prometheus.yml"
+    prometheus.vm.provision "file", source: "../../../shared-scripts/prometheus/prometheus.yml", destination: "/home/vagrant/prometheus.yml"
 
     prometheus.vm.provision :shell,
       path: "../../../shared-scripts/prometheus/deploy_prometheus_config.sh"  
