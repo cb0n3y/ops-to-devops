@@ -20,6 +20,12 @@ jobs:
           fetch-depth: 0
           ref: main
 
+      - name: Pull latest changes and reset to tag
+        run: |
+          git fetch --tags
+          git checkout main
+          git reset --hrad ${{ github.sha }}
+
       - name: Install git-cliff
         run: |
           VERSION="2.9.1"
