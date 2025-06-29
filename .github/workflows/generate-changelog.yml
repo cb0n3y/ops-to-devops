@@ -19,7 +19,7 @@ jobs:
 
       - name: Install git-cliff
         run: |
-          VERSION="3.6.1"
+          VERSION="2.9.1"
           ARCH="x86_64-unknown-linux-gnu"
           ARCHIVE="git-cliff-${VERSION}-${ARCH}.tar.gz"
           CLIFF_URL="https://github.com/orhun/git-cliff/releases/download"
