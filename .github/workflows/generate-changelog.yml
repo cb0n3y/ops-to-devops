@@ -30,6 +30,8 @@ jobs:
           sudo chmod +x /usr/local/bin/git-cliff
 
       - name: Generate changelog
+        env:
+          REPO_NAME: ${{ github.repository }}
         run: |
           git-cliff --config .git-cliff.toml -o CHANGELOG.md
 
