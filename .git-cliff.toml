@@ -11,7 +11,7 @@ body = """
 ### {{ group | upper_first }}
 {%- for commit in commits %}
   {%- set msg = commit.message | split(pat="\n") | first | trim %}
-  {%- set cleaned = msg | regex_replace(pat="^[a-z]+(\([\w\-]+\))?:\s*", rep="") %}
+  {%- set cleaned = msg | regex_replace(pat="^[a-z]+\\([\\w\\-]+\\)?:\\s*", rep="") %}
   - {{ cleaned | upper_first }}
     {%- if commit.remote.username %} by @{{ commit.remote.username }}{% endif %}
     {%- if commit.remote.pr_number %} in [#{{ commit.remote.pr_number }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/pull/{{ commit.remote.pr_number }}){% endif %}
