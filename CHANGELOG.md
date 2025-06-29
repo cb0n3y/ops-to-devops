@@ -6,52 +6,6 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - Add a new target by @cb0n3y
-
-### Changed
-- Update for v0.2 by @actions-user
-- Merge pull request #50 from cb0n3y/fix/ci by @cb0n3y in [#50](https://github.com/cb0n3y/ops-to-devops/pull/50)
-- Merge pull request #49 from cb0n3y/fix/ci by @cb0n3y in [#49](https://github.com/cb0n3y/ops-to-devops/pull/49)
-- Merge pull request #48 from cb0n3y/fix/ci by @cb0n3y in [#48](https://github.com/cb0n3y/ops-to-devops/pull/48)
-- Merge pull request #47 from cb0n3y/fix/ci by @cb0n3y in [#47](https://github.com/cb0n3y/ops-to-devops/pull/47)
-- Merge pull request #46 from cb0n3y/fix/ci by @cb0n3y in [#46](https://github.com/cb0n3y/ops-to-devops/pull/46)
-- Merge pull request #45 from cb0n3y/fix/changelog-generation by @cb0n3y in [#45](https://github.com/cb0n3y/ops-to-devops/pull/45)
-- Merge pull request #44 from cb0n3y/main by @cb0n3y in [#44](https://github.com/cb0n3y/ops-to-devops/pull/44)
-- Merge pull request #43 from cb0n3y/fix/changelog-generation by @cb0n3y in [#43](https://github.com/cb0n3y/ops-to-devops/pull/43)
-- Merge pull request #42 from cb0n3y/fix/changelog-generation by @cb0n3y in [#42](https://github.com/cb0n3y/ops-to-devops/pull/42)
-- Merge pull request #41 from cb0n3y/fix/changelog-generation by @cb0n3y in [#41](https://github.com/cb0n3y/ops-to-devops/pull/41)
-- Merge pull request #40 from cb0n3y/chore/monitorinf-prometheus by @cb0n3y in [#40](https://github.com/cb0n3y/ops-to-devops/pull/40)
-- Merge pull request #39 from cb0n3y/chore/monitorinf-prometheus by @cb0n3y in [#39](https://github.com/cb0n3y/ops-to-devops/pull/39)
-
-### Fixed
-- Restructure git-cliff.toml by @cb0n3y
-- Restructure git-cliff.toml by @cb0n3y
-- Fix typo by @cb0n3y
-- Fix syntax by @cb0n3y
-- Fix syntax by @cb0n3y
-- Fix syntax by @cb0n3y
-- Fix syntax by @cb0n3y
-- Testing another config by @cb0n3y
-- Fixing regex by @cb0n3y
-- Fixing regex by @cb0n3y
-- Fixing regex by @cb0n3y
-- Fixing regex by @cb0n3y
-- Fix env issue by @cb0n3y
-- Restore git-cliff version by @cb0n3y
-- Change git-cliff version by @cb0n3y
-- Fix toml syntax by @cb0n3y
-- Fix env issue by @cb0n3y
-- Fix env issue by @cb0n3y
-- Fix regex in toml file by @cb0n3y
-- Fix git-cliff installation by @cb0n3y
-- Fix name resolution by @cb0n3y
-
-### Removed
-- Delete the use of env.REPO_NAME by @cb0n3y
-- Delete the use of env.REPO_NAME by @cb0n3y
-
-## [grafana-ds-only-v1] - 2025-06-28
-
-### Added
 - Add dashboard.yml file by @cb0n3y
 - Add node_exporter dashboard by @cb0n3y
 - Add provissioning by @cb0n3y
@@ -67,6 +21,20 @@ All notable changes to this project will be documented in this file.
 - Add yamllint file by @cb0n3y
 
 ### Changed
+- Update for v0.2 by @actions-user
+- Update for v0.2 by @actions-user
+- Merge pull request #50 from cb0n3y/fix/ci by @cb0n3y in [#50](https://github.com/cb0n3y/ops-to-devops/pull/50)
+- Merge pull request #49 from cb0n3y/fix/ci by @cb0n3y in [#49](https://github.com/cb0n3y/ops-to-devops/pull/49)
+- Merge pull request #48 from cb0n3y/fix/ci by @cb0n3y in [#48](https://github.com/cb0n3y/ops-to-devops/pull/48)
+- Merge pull request #47 from cb0n3y/fix/ci by @cb0n3y in [#47](https://github.com/cb0n3y/ops-to-devops/pull/47)
+- Merge pull request #46 from cb0n3y/fix/ci by @cb0n3y in [#46](https://github.com/cb0n3y/ops-to-devops/pull/46)
+- Merge pull request #45 from cb0n3y/fix/changelog-generation by @cb0n3y in [#45](https://github.com/cb0n3y/ops-to-devops/pull/45)
+- Merge pull request #44 from cb0n3y/main by @cb0n3y in [#44](https://github.com/cb0n3y/ops-to-devops/pull/44)
+- Merge pull request #43 from cb0n3y/fix/changelog-generation by @cb0n3y in [#43](https://github.com/cb0n3y/ops-to-devops/pull/43)
+- Merge pull request #42 from cb0n3y/fix/changelog-generation by @cb0n3y in [#42](https://github.com/cb0n3y/ops-to-devops/pull/42)
+- Merge pull request #41 from cb0n3y/fix/changelog-generation by @cb0n3y in [#41](https://github.com/cb0n3y/ops-to-devops/pull/41)
+- Merge pull request #40 from cb0n3y/chore/monitorinf-prometheus by @cb0n3y in [#40](https://github.com/cb0n3y/ops-to-devops/pull/40)
+- Merge pull request #39 from cb0n3y/chore/monitorinf-prometheus by @cb0n3y in [#39](https://github.com/cb0n3y/ops-to-devops/pull/39)
 - Merge pull request #38 from cb0n3y/chore/monitorinf-grafana by @cb0n3y in [#38](https://github.com/cb0n3y/ops-to-devops/pull/38)
 - Enhance vagrantfile by @cb0n3y
 - Change ip for FQDN by @cb0n3y
@@ -100,6 +68,28 @@ All notable changes to this project will be documented in this file.
 - Update for v0.1.1 by @actions-user
 
 ### Fixed
+- Restructure by @cb0n3y
+- Restructure git-cliff.toml by @cb0n3y
+- Restructure git-cliff.toml by @cb0n3y
+- Fix typo by @cb0n3y
+- Fix syntax by @cb0n3y
+- Fix syntax by @cb0n3y
+- Fix syntax by @cb0n3y
+- Fix syntax by @cb0n3y
+- Testing another config by @cb0n3y
+- Fixing regex by @cb0n3y
+- Fixing regex by @cb0n3y
+- Fixing regex by @cb0n3y
+- Fixing regex by @cb0n3y
+- Fix env issue by @cb0n3y
+- Restore git-cliff version by @cb0n3y
+- Change git-cliff version by @cb0n3y
+- Fix toml syntax by @cb0n3y
+- Fix env issue by @cb0n3y
+- Fix env issue by @cb0n3y
+- Fix regex in toml file by @cb0n3y
+- Fix git-cliff installation by @cb0n3y
+- Fix name resolution by @cb0n3y
 - Fix FQDN in hosts file by @cb0n3y
 - Fix syntax isssue by @cb0n3y
 - Fix syntax isssue by @cb0n3y
@@ -133,6 +123,9 @@ All notable changes to this project will be documented in this file.
 - Fix git-cliff execution by @cb0n3y
 
 ### Removed
+- Delete double line by @cb0n3y
+- Delete the use of env.REPO_NAME by @cb0n3y
+- Delete the use of env.REPO_NAME by @cb0n3y
 - Delete custom dashboard by @cb0n3y
 - Delete comment from user creation by @cb0n3y
 - Remove scripts folder double by @cb0n3y
