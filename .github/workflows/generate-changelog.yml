@@ -24,7 +24,7 @@ jobs:
         run: |
           git fetch --tags
           git checkout main
-          git reset --hrad ${{ github.sha }}
+          git reset --hard ${{ github.sha }}
 
       - name: Install git-cliff
         run: |
