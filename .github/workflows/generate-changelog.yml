@@ -19,15 +19,15 @@ jobs:
 
       - name: Install git-cliff
         run: |
-          VERSION="2.9.1" \
-          ARCH="x86_64-unknown-linux-gnu" \
-          ARCHIVE="git-cliff-${VERSION}-${ARCH}.tar.gz" \
-          CLIFF_URL="https://github.com/orhun/git-cliff/releases/download" \
-          FULL_URL="${CLIFF_URL}/v${VERSION}/${ARCHIVE}" \
-          curl -sSL "${FULL_URL}" -o git-cliff \
-          tar -xf git-cliff \
-          sudo mv git-cliff-"${VERSION}"/git-cliff /usr/local/bin \
-          sudo chmod +x /usr/local/bin/git-cliff \
+          VERSION="2.9.1"
+          ARCH="x86_64-unknown-linux-gnu"
+          ARCHIVE="git-cliff-${VERSION}-${ARCH}.tar.gz"
+          CLIFF_URL="https://github.com/orhun/git-cliff/releases/download"
+          FULL_URL="${CLIFF_URL}/v${VERSION}/${ARCHIVE}"
+          curl -sSL "${FULL_URL}" -o git-cliff
+          tar -xf git-cliff
+          sudo mv git-cliff-"${VERSION}"/git-cliff /usr/local/bin
+          sudo chmod +x /usr/local/bin/git-cliff
 
       - name: Generate changelog
         run: |
