@@ -2,19 +2,138 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [0.2] - 2025-06-29
 
-## [Unreleased]
+### Added
+- Add a new target by @cb0n3y
 
 ### Changed
+- Merge pull request #50 from cb0n3y/fix/ci by @cb0n3y in [#50](https://github.com/cb0n3y/ops-to-devops/pull/50)
+- Merge pull request #49 from cb0n3y/fix/ci by @cb0n3y in [#49](https://github.com/cb0n3y/ops-to-devops/pull/49)
+- Merge pull request #48 from cb0n3y/fix/ci by @cb0n3y in [#48](https://github.com/cb0n3y/ops-to-devops/pull/48)
+- Merge pull request #47 from cb0n3y/fix/ci by @cb0n3y in [#47](https://github.com/cb0n3y/ops-to-devops/pull/47)
+- Merge pull request #46 from cb0n3y/fix/ci by @cb0n3y in [#46](https://github.com/cb0n3y/ops-to-devops/pull/46)
+- Merge pull request #45 from cb0n3y/fix/changelog-generation by @cb0n3y in [#45](https://github.com/cb0n3y/ops-to-devops/pull/45)
+- Merge pull request #44 from cb0n3y/main by @cb0n3y in [#44](https://github.com/cb0n3y/ops-to-devops/pull/44)
+- Merge pull request #43 from cb0n3y/fix/changelog-generation by @cb0n3y in [#43](https://github.com/cb0n3y/ops-to-devops/pull/43)
+- Merge pull request #42 from cb0n3y/fix/changelog-generation by @cb0n3y in [#42](https://github.com/cb0n3y/ops-to-devops/pull/42)
+- Merge pull request #41 from cb0n3y/fix/changelog-generation by @cb0n3y in [#41](https://github.com/cb0n3y/ops-to-devops/pull/41)
+- Merge pull request #40 from cb0n3y/chore/monitorinf-prometheus by @cb0n3y in [#40](https://github.com/cb0n3y/ops-to-devops/pull/40)
+- Merge pull request #39 from cb0n3y/chore/monitorinf-prometheus by @cb0n3y in [#39](https://github.com/cb0n3y/ops-to-devops/pull/39)
+
+### Fixed
+- Fix typo by @cb0n3y
+- Fix syntax by @cb0n3y
+- Fix syntax by @cb0n3y
+- Fix syntax by @cb0n3y
+- Fix syntax by @cb0n3y
+- Testing another config by @cb0n3y
+- Fixing regex by @cb0n3y
+- Fixing regex by @cb0n3y
+- Fixing regex by @cb0n3y
+- Fixing regex by @cb0n3y
+- Fix env issue by @cb0n3y
+- Restore git-cliff version by @cb0n3y
+- Change git-cliff version by @cb0n3y
+- Fix toml syntax by @cb0n3y
+- Fix env issue by @cb0n3y
+- Fix env issue by @cb0n3y
+- Fix regex in toml file by @cb0n3y
+- Fix git-cliff installation by @cb0n3y
+- Fix name resolution by @cb0n3y
+
+### Removed
+- Delete the use of env.REPO_NAME by @cb0n3y
+- Delete the use of env.REPO_NAME by @cb0n3y
+
+## [grafana-ds-only-v1] - 2025-06-28
+
+### Added
+- Add dashboard.yml file by @cb0n3y
+- Add node_exporter dashboard by @cb0n3y
+- Add provissioning by @cb0n3y
+- Add prometheus-ds.yml file by @cb0n3y
+- Add python PEP8 check by @cb0n3y
+- Add cb-support by @cb0n3y
+- Add python-for-devops by @cb0n3y
+- Add export-keys.sh by @cb0n3y
+- Add initial README file by @cb0n3y
+- Add node-state-wrapper.py by @cb0n3y
+- Add new line at the end of the file by @cb0n3y
+- Add document marker to yamllint file by @cb0n3y
+- Add yamllint file by @cb0n3y
+
+### Changed
+- Merge pull request #38 from cb0n3y/chore/monitorinf-grafana by @cb0n3y in [#38](https://github.com/cb0n3y/ops-to-devops/pull/38)
+- Enhance vagrantfile by @cb0n3y
+- Change ip for FQDN by @cb0n3y
+- Set file into the right directory by @cb0n3y
+- Integrate bode_exporter dashboard by @cb0n3y
+- Refator file by @cb0n3y
+- Merge pull request #37 from cb0n3y/main by @cb0n3y in [#37](https://github.com/cb0n3y/ops-to-devops/pull/37)
+- Merge pull request #36 from cb0n3y/chore/monitoring-grafana by @cb0n3y in [#36](https://github.com/cb0n3y/ops-to-devops/pull/36)
+- Merge remote-tracking branch 'origin/main' into chore/monitorinf-grafana by @cb0n3y
+- Merge pull request #35 from cb0n3y/chore/monitorinf-prometheus by @cb0n3y in [#35](https://github.com/cb0n3y/ops-to-devops/pull/35)
+- Merge pull request #34 from cb0n3y/chore/monitorinf-grafana by @cb0n3y in [#34](https://github.com/cb0n3y/ops-to-devops/pull/34)
+- Modify prometheus-ds.yml file by @cb0n3y
+- Merge pull request #33 from cb0n3y/chore/python-scripting by @cb0n3y in [#33](https://github.com/cb0n3y/ops-to-devops/pull/33)
+- Reformate node-status-wrapper.py by @cb0n3y
+- Merge pull request #31 from cb0n3y/ci/python-linting by @cb0n3y in [#31](https://github.com/cb0n3y/ops-to-devops/pull/31)
+- Merge pull request #32 from cb0n3y/chore/python-scripting by @cb0n3y in [#32](https://github.com/cb0n3y/ops-to-devops/pull/32)
+- Import missing module by @cb0n3y
+- Merge pull request #30 from cb0n3y/refactor/tree-structure by @cb0n3y in [#30](https://github.com/cb0n3y/ops-to-devops/pull/30)
+- Merge pull request #29 from cb0n3y/refactor/tree-structure by @cb0n3y in [#29](https://github.com/cb0n3y/ops-to-devops/pull/29)
+- Merge pull request #28 from cb0n3y/chore/python-scripting by @cb0n3y in [#28](https://github.com/cb0n3y/ops-to-devops/pull/28)
+- Merge pull request #27 from cb0n3y/fix/ci by @cb0n3y in [#27](https://github.com/cb0n3y/ops-to-devops/pull/27)
+- Merge pull request #24 from cb0n3y/chore/add-git-cliff-config by @cb0n3y in [#24](https://github.com/cb0n3y/ops-to-devops/pull/24)
+- Refine config for cleaner changelog output by @cb0n3y
+- Merge pull request #26 from cb0n3y/fix/ci by @cb0n3y in [#26](https://github.com/cb0n3y/ops-to-devops/pull/26)
+- Merge branch 'main' into fix/ci by @cb0n3y
+- Write everything from scratch by @cb0n3y
+- Enforce LF line endings for YAML files by @cb0n3y
+- Update for v0.1.1 by @actions-user
 - Merge pull request #25 from cb0n3y/fix/ci by @cb0n3y in [#25](https://github.com/cb0n3y/ops-to-devops/pull/25)
 - Merge pull request #23 from cb0n3y/main by @cb0n3y in [#23](https://github.com/cb0n3y/ops-to-devops/pull/23)
 - Update for v0.1.1 by @actions-user
 
 ### Fixed
+- Fix FQDN in hosts file by @cb0n3y
+- Fix syntax isssue by @cb0n3y
+- Fix syntax isssue by @cb0n3y
+- Fix path issues by @cb0n3y
+- Fix path issues by @cb0n3y
+- Fix path issue by @cb0n3y
+- Fix path issue by @cb0n3y
+- Fix syntax by @cb0n3y
+- Fix path issue by @cb0n3y
+- Fix path issue by @cb0n3y
+- Fix path issue by @cb0n3y
+- Fix linting issue by @cb0n3y
+- Split line 42 by @cb0n3y
+- Split line 25 by @cb0n3y
+- Fix syntax by @cb0n3y
+- Fix syntax by @cb0n3y
+- Fix syntax by @cb0n3y
+- Fix syntax by @cb0n3y
+- Fix syntax by @cb0n3y
+- Fix syntax by @cb0n3y
+- Fix a truethy by @cb0n3y
+- Fix a truethy by @cb0n3y
+- Fixing linting issues by @cb0n3y
+- Fix variable by @cb0n3y
+- Fix variable by @cb0n3y
+- Fix linting issues by @cb0n3y
+- Fix linting issue by @cb0n3y
+- Fix linting issue by @cb0n3y
+- Fix linting issue by @cb0n3y
 - Fix git-cliff execution by @cb0n3y
 - Fix git-cliff execution by @cb0n3y
+
+### Removed
+- Delete custom dashboard by @cb0n3y
+- Delete comment from user creation by @cb0n3y
+- Remove scripts folder double by @cb0n3y
+- Delete unrequired comments. by @cb0n3y
 
 ## New Contributors
 * @actions-user made their first contribution
@@ -137,7 +256,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## New Contributors
 * @cb0n3y made their first contribution in [#17](https://github.com/cb0n3y/ops-to-devops/pull/17)
-[unreleased]: https://github.com/cb0n3y/ops-to-devops/compare/v0.1.1..HEAD
+[0.2]: https://github.com/cb0n3y/ops-to-devops/compare/grafana-ds-only-v1..v0.2
+[grafana-ds-only-v1]: https://github.com/cb0n3y/ops-to-devops/compare/v0.1.1..grafana-ds-only-v1
 [0.1.1]: https://github.com/cb0n3y/ops-to-devops/compare/v0.1.0..v0.1.1
 
 <!-- generated by git-cliff -->
