@@ -42,6 +42,7 @@ filter_unconventional = false
 commit_preprocessors = [
   # Remove issue numbers.
   { pattern = '\((\w+\s)?#([0-9]+)\)', replace = "" },
+  { pattern = "^(.*)$", replace = "${1}" }  # Just a placeholder for order; you can’t deduplicate at this level with current git-cliff logic
 ]
 commit_parsers = [
   { message = "^[a|A]dd", group = "Added" },
@@ -56,14 +57,17 @@ commit_parsers = [
   { message = "^.*: fix", group = "Fixed" },
   { message = "^.*", group = "Changed" },
 ]
+
+filter_merge_commits = true
+
 filter_commits = true
 filter_merge_commits = true
 topo_order = false
 sort_commits = "newest"
+tag_pattern = "^v?[0-9]+\\.[0-9]+.*"
 
 [commit_parsers]
   conventional = { pattern = "^(?P<type>\\w+)(\\(.*\\))?!?:\\s(?P<description>.+)", header = true }
 
 [transform]
-  # Remove commit type from the message shown in changelog
   commit_message = "{{ description }}"
