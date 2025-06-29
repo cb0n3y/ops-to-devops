@@ -58,8 +58,6 @@ commit_parsers = [
   { message = "^.*", group = "Changed" },
 ]
 
-filter_merge_commits = true
-
 filter_commits = true
 filter_merge_commits = true
 topo_order = false
