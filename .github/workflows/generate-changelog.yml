@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # ref: main
 
       - name: Install git-cliff
         run: |
@@ -35,15 +38,15 @@ jobs:
 
       - name: Commit and push changelog
         run: |
-          git config user.name "GitHub Actions" && \
-          git config user.email "actions@github.com" && \
-          git add CHANGELOG.md &&\
-          if ! git diff --cached --quiet; then \
-            MSG="docs(changelog): update for ${{ github.ref_name }}" && \
-            git commit -m "$MSG" && \
-            git push origin main;  \
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add CHANGELOG.md
+          if ! git diff --cached --quiet; then
+            MSG="docs(changelog): update for ${{ github.ref_name }}"
+            git commit -m "$MSG"
+            git push origin main
           else
-            echo "No changes to commit"; \
+            echo "No changes to commit"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
