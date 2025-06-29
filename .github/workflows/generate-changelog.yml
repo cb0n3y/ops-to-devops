@@ -33,8 +33,8 @@ jobs:
         env:
           REPO_NAME: ${{ github.repository }}
         run: |
-          git-cliff --config .git-cliff.toml -o CHANGELOG.md --template-vars \
-          REPO_NAME="${REPO_NAME}"
+          env | grep REPO_NAME    # debug: check if env var is visible
+          git-cliff --config .git-cliff.toml -o CHANGELOG.md
 
       - name: Commit and push changelog
         run: |
