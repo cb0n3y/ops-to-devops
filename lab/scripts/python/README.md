@@ -6,9 +6,7 @@ This section of the `ops-to-devops` project focuses on practical, real-world Pyt
 ---
 
 ## 📁 Structure
-
-```bash
-python-for-devops/
+  python-for-devops/
 ├── README.md
 ├── scripts/
 │ ├── backup_config.py
@@ -19,7 +17,7 @@ python-for-devops/
 ├── tests/
 │ └── test_common_utils.py
 └── requirements.txt
-```
+
 
 ---
 
